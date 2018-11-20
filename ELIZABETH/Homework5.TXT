@@ -1,0 +1,83 @@
+
+
+def letter2number(letter):
+    if letter in "ABCabc":
+        return 2
+    elif letter in "DEFdef":
+        return 3
+    elif letter in "GHIghi":
+        return 4
+    elif letter in "JKLjkl":
+        return 5
+    elif letter in "MNOmno":
+        return 6
+    elif letter in "PQRSpqrs":
+        return 7
+    elif letter in "TUVtuv":
+        return 8
+    elif letter in "WXYZwxyz":
+        return 9
+
+
+def name2number(name):
+    xnum='' 
+    for letter in name:
+        xnum = xnum + str(letter2number(letter))
+    return xnum
+
+def no_zeros_or_ones(anum):
+    bnum=''
+    for digit in anum:
+        if digit in "23456789":
+            bnum = bnum + digit
+    
+    return bnum
+
+
+
+def lookup_name(name):
+    name_dict = dict()
+    fin = open('first.txt')
+    for line in fin:
+        row = line.strip()
+        words = row.split()
+        if words[0] == name:
+            n=''
+            for c in words[0]:
+                n = n + str(letter2number(c))
+            name_dict[words[0]] = n
+            print(words[0],name_dict[words[0]])
+
+def create_phonelist():
+    name_dict = dict()
+    num_dict = dict()
+    fin = open('first.txt')
+    for line in fin:
+        row = line.strip()
+        words = row.split()
+        ##if words[0] == name:
+        n=''
+        for c in words[0]:
+            n = n + str(letter2number(c))
+        name_dict[words[0]] = n
+        num_dict[n] = words[0]
+        ##print(words[0],name_dict[words[0]])
+    return num_dict
+
+
+phonelist = create_phonelist()
+print(phonelist['32843'])
+
+##reverse lookup
+##for k in phonelist:
+##    if phonelist[k] == '53484':    ##32843
+##        print(k,phonelist[k])
+##a = letter2number('I')
+##print(a)
+##b = name2number('adgjmptw')
+##print(b)
+##c = no_zeros_or_ones('3284310')
+##print(c)
+##lookup_name('DAVID')
+##print(phonelist['DAVID'])
+
